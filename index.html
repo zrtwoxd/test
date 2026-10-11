@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi Pretty &gt;&lt; 💗</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: #ffe6f0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Main container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            min-height: 580px;
+            border: 4px solid #ff69a6;
+            border-radius: 100px;
+            padding: 45px 25px;
+            text-align: center;
+            background: #fff8fb;
+            box-shadow: 0 10px 30px #ffb6d5;
+        }
+
+        /* Main title */
+        h1 {
+            color: #ff4f9a;
+            font-size: 48px;
+            margin: 25px 0 100px;
+            text-shadow: 2px 2px 5px #ffc0d9;
+        }
+
+        /* Three original boxes */
+        .boxes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            width: 220px;
+            height: 200px;
+            border: 4px solid #ff69a6;
+            border-radius: 35px;
+            background: #ffe0ed;
+            color: #e83e87;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .box:hover {
+            background: #ffb6d5;
+            transform: translateY(-8px) scale(1.04);
+            box-shadow: 0 8px 20px #ffc0d9;
+        }
+
+        .box:active {
+            transform: scale(0.96);
+        }
+
+        .emoji {
+            display: block;
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+
+        /* Small question mark BELOW the three boxes */
+        .question-area {
+            margin-top: 35px;
+            text-align: center;
+        }
+
+        .question-button {
+            width: 42px;
+            height: 42px;
+            border: 2px solid #ff69a6;
+            border-radius: 50%;
+            background: #ffe0ed;
+            color: #e83e87;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 3px 8px #ffc0d9;
+        }
+
+        .question-button:hover {
+            background: #ff69a6;
+            color: white;
+            transform: scale(1.12);
+        }
+
+        .question-area p {
+            margin: 8px 0 0;
+            color: #e83e87;
+            font-size: 12px;
+        }
+
+        /* Popup background */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10;
+            background: rgba(100, 35, 65, 0.45);
+            justify-content: center;
+            align-items: center;
+            padding: 18px;
+        }
+
+        /* Popup content */
+        .modal-content {
+            background: #fff8fb;
+            border: 3px solid #ff80b5;
+            border-radius: 28px;
+            padding: 25px;
+            width: 100%;
+            max-width: 650px;
+            max-height: 85vh;
+            overflow-y: auto;
+            text-align: left;
+            box-shadow: 0 10px 35px #e98ab5;
+            animation: pop 0.25s ease;
+        }
+
+        .modal-content h2 {
+            color: #ff4f9a;
+            text-align: center;
+            margin: 10px 0 25px;
+        }
+
+        .message {
+            color: #80445f;
+            font-size: 16px;
+            line-height: 1.9;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+
+        .close {
+            display: block;
+            margin-left: auto;
+            border: none;
+            border-radius: 50%;
+            background: #ffb6d5;
+            color: #a52d63;
+            width: 38px;
+            height: 38px;
+            font-size: 23px;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            background: #ff80b5;
+            color: white;
+        }
+
+        .signature {
+            text-align: center;
+            color: #ff4f9a;
+            margin-top: 25px;
+            font-weight: bold;
+        }
+
+        @keyframes pop {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Mobile layout */
+        @media (max-width: 700px) {
+            .container {
+                border-radius: 45px;
+                padding: 30px 15px;
+            }
+
+            h1 {
+                font-size: 34px;
+                margin: 25px 0 55px;
+            }
+
+            .boxes {
+                gap: 22px;
+            }
+
+            .box {
+                width: 100%;
+                max-width: 280px;
+                height: 150px;
+            }
+
+            .emoji {
+                margin-bottom: 15px;
+            }
+
+            .question-area {
+                margin-top: 28px;
+            }
+
+            .modal-content {
+                padding: 20px;
+                border-radius: 22px;
+            }
+
+            .message {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <h1>Hi Pretty &gt;&lt; 💗</h1>
+
+        <!-- THREE ORIGINAL CLICKABLE BOXES -->
+        <div class="boxes">
+
+            <button class="box" onclick="openMessage(1)">
+                <span class="emoji">💗</span>
+                Click Me
+            </button>
+
+            <button class="box" onclick="openMessage(2)">
+                <span class="emoji">🎀</span>
+                Click Me
+            </button>
+
+            <button class="box" onclick="openMessage(3)">
+                <span class="emoji">💌</span>
+                Click Me
+            </button>
+
+        </div>
+
+        <!-- SMALL QUESTION MARK UNDER THE THREE BOXES -->
+        <div class="question-area">
+            <button
+                class="question-button"
+                onclick="openMessage(4)"
+                aria-label="Read a little secret">
+                ?
+            </button>
+
+            <p>info :p</p>
+        </div>
+
+    </main>
+
+    <!-- MESSAGE POPUP -->
+    <div
+        class="modal"
+        id="messageModal"
+        onclick="closeOutside(event)">
+
+        <div class="modal-content">
+
+            <button
+                class="close"
+                onclick="closeMessage()"
+                aria-label="Close">
+                &times;
+            </button>
+
+            <h2 id="messageTitle">For my baby</h2>
+
+            <div class="message" id="messageText"></div>
+
+            <p class="signature" id="messageSignature">
+                mwamwa hihi i love you
+            </p>
+
+        </div>
+    </div>
+
+    <script>
+        const messages = {
+
+            1: {
+                title: "A little message for you",
+                text: `hiii my baobaooo, my pretty girl, my baby :(  i just want you to know na i'm really glad i met you. idk how to explain it pero there's just something about you that makes me wanna know you more, love you more, and stay a little longer. i love hearing your stories, even the most random ones, and i love knowing the little things about you that other people might not even notice. you don't always have to be okay around me, ha? you don't have to act strong all the time or pretend na you're not tired. you can be your softest self with me, baby. i'll listen to you kahit paulit-ulit pa yan, and i'll do my best to understand you. i hope you never forget how precious you are to me, baobao. mwa mwa mwaaa, i love youuu so muchhh`,
+                signature: "mwamwa hihi i love you"
+            },
+
+            2: {
+                title: "A hug for my baby",
+                text: `babyyy, come here nga muna, pahuggg >< i know there are days when everything feels so heavy, and sometimes you don't even know how to explain what you're feeling. and that's okay, my love. you don't have to find the right words just to tell me you're not okay. you can rant to me, cry, be quiet, or just stay there and let yourself feel everything. you don't need to apologize for having feelings, okay? and please don't be too hard on yourself, baobao. i'm proud of you for trying, even on days when you feel like you're not doing enough. you deserve kindness too, baby, especially from yourself. if i could, i'd give you the biggest hug rn and let you rest for a while without having to worry about anything. but since i'm here through my little messages muna, let this be your reminder na you're not a burden for needing comfort. i care about you, babyyy. one thing at a time lang, okay? you don't have to figure everything out tonight. mwaaa, my baby`,
+                signature: "mwamwa hihi i love you"
+            },
+
+            3: {
+                title: "Missing you, baobaooo",
+                text: `hiii my clingy little baobaooo, miss na miss mo na ba meee? EHEHEHEHE because if yes, edi same tayo, baby!! sometimes i wish i could just teleport to you whenever you tell me na you need a hug or whenever you have something you wanna share with me. imagine mo, no need to wait for replies or type everything out kasi nandiyan lang ako beside you. i'd listen to your kwentos, annoy you a little, make you laugh, and remind you how cute you are kahit ayaw mong maniwala HAHAHAHA. but for now, i'll just keep sending you these little pieces of me through my messages. i hope whenever you read this, you can somehow feel how much i appreciate having you in my life. i wanna know more about you, your random thoughts, your dreams, your little achievements, even the things you think are boring. i wanna celebrate the happy days with you and listen to you on the not-so-happy ones too. so if you miss me, babyyy, read this again and imagine me telling you na mwa mwa mwaaa, i miss you too, my pretty baobaooo.`,
+                signature: "mwamwa hihi i love you"
+            },
+
+            4: {
+                title: "hey",
+                text: `hiii
+
+this website is work in progress pa, this will be my soon project for you. this is just a prototype of my thing na ginagawa ko just now. ilalagay ko lahat mga cute things here, pwede na rin lahat ilagay ko here. hihihi`,
+                signature: "-xel"
+            }
+
+        };
+
+        function openMessage(number) {
+            document.getElementById("messageTitle").textContent =
+                messages[number].title;
+
+            document.getElementById("messageText").textContent =
+                messages[number].text;
+
+            document.getElementById("messageSignature").textContent =
+                messages[number].signature;
+
+            document.getElementById("messageModal").style.display = "flex";
+
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeMessage() {
+            document.getElementById("messageModal").style.display = "none";
+            document.body.style.overflow = "";
+        }
+
+        function closeOutside(event) {
+            if (event.target.id === "messageModal") {
+                closeMessage();
+            }
+        }
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                closeMessage();
+            }
+        });
+    </script>
+
+</body>
+</html>
